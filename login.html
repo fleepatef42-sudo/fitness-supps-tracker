@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="صفحة تسجيل الدخول الخاصة بمنصة PulseFuel Pro لإدارة التغذية والتمرين.">
+  <title>PulseFuel Pro | تسجيل الدخول</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-orb orb-one"></div>
+  <div class="page-orb orb-two"></div>
+
+  <div class="auth-shell">
+    <section class="auth-hero">
+      <div class="auth-brand">
+        <div class="brand-lockup">
+          <span class="brand-kicker">PulseFuel Pro</span>
+          <span class="brand-dot"></span>
+          <span class="brand-support">Performance Nutrition Dashboard</span>
+        </div>
+
+        <h1>تحكم في أدائك الرياضي بمستوى احترافي جديد.</h1>
+        <p>
+          انضم إلى مجتمع PulseFuel Pro واستخدم أقوى الأدوات لتتبع التغذية، التمارين، والمكملات في منصة واحدة متكاملة.
+        </p>
+
+        <div class="auth-metrics">
+          <div class="metric-card">
+            <strong>Secure</strong>
+            <span>دخول وحسابات محفوظة محليًا داخل المتصفح</span>
+          </div>
+          <div class="auth-feature">
+            <strong>واجهة بيانات موحدة</strong>
+            <span>كل ما تحتاجه في مكان واحد لتقليل التشتت وزيادة التركيز على أهدافك.</span>
+          </div>
+          <div class="metric-card">
+            <strong>Personal</strong>
+            <span>لكل مستخدم بياناته المنفصلة داخل النظام</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-panel">
+        <div class="auth-panel-head">
+          <span class="panel-badge">تسجيل الدخول</span>
+          <h2>ادخل إلى حسابك</h2>
+          <p>بعد نجاح الدخول سيتم تحويلك مباشرة إلى لوحة المتابعة.</p>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <div class="field">
+            <label for="loginEmail">البريد الإلكتروني</label>
+            <input id="loginEmail" type="email" placeholder="name@example.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="loginPassword">كلمة المرور</label>
+            <input id="loginPassword" type="password" placeholder="أدخل كلمة المرور" autocomplete="current-password">
+          </div>
+          <div class="button-row">
+            <button class="btn btn-primary auth-submit" type="submit">دخول إلى اللوحة</button>
+            <button id="guestLogin" class="btn btn-secondary auth-submit" type="button">دخول كضيف (بدون حساب)</button>
+          </div>
+        </form>
+
+        <div id="authMessage" class="auth-message"></div>
+
+        <div class="auth-footer">
+          ليس لديك حساب؟ <a href="./register.html" class="auth-link">إنشاء حساب جديد</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./login.js"></script>
+</body>
+</html>

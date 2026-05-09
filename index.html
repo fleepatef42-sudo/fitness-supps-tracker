@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="لوحة احترافية لحساب السعرات والماكروز، تنظيم المكملات، تسجيل الأداء، وبناء نظام تمرين وغذاء يومي.">
+  <title>PulseFuel Pro | لوحة التغذية والتمرين</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-orb orb-one"></div>
+  <div class="page-orb orb-two"></div>
+
+  <div id="appScreen" class="app-shell">
+    <header class="topbar">
+      <div class="topbar-copy">
+        <div class="brand-lockup">
+          <span class="brand-kicker">PulseFuel Pro</span>
+          <span class="brand-dot"></span>
+          <span class="topbar-meta">Performance Command Center</span>
+        </div>
+        <h1 class="topbar-title">متابعة التغذية، المكملات، والأداء من لوحة واحدة</h1>
+        <p class="topbar-text">
+          واجهة عملية تمنحك أرقامًا أوضح، قرارات أسرع، وسجلًا مرتبًا لكل ما يتعلق بيومك الرياضي.
+        </p>
+        <nav class="topbar-nav" aria-label="روابط سريعة">
+          <a href="#nutritionPanel">التغذية</a>
+          <a href="#supplementsPanel">المكملات</a>
+          <a href="#workoutPanel">الأداء</a>
+          <a href="#progressPanel">التطور</a>
+          <a href="#historyPanel">السجل</a>
+        </nav>
+      </div>
+      <div class="topbar-actions">
+        <span id="currentUserName" class="user-badge"></span>
+        <button id="logoutBtn" class="btn btn-secondary" type="button">تسجيل الخروج</button>
+      </div>
+    </header>
+
+    <section class="overview">
+      <div class="overview-main">
+        <div class="overview-copy">
+          <span class="eyebrow">نظرة تشغيلية</span>
+          <h2>رتّب يومك الرياضي من أول السعرات حتى آخر جلسة مسجلة.</h2>
+          <p>
+            كل تعديل في بيانات الجسم أو الهدف ينعكس مباشرة على الماكروز وخطة الأكل. أضف مكملاتك، سجّل أداءك،
+            وتابع تطورك من لوحة مصممة لتقلل التشتت وتزيد الوضوح.
+          </p>
+        </div>
+
+        <div class="overview-stats">
+          <div class="stat-box stat-accent">
+            <span>السعرات المستهدفة</span>
+            <strong id="statCalories">0</strong>
+          </div>
+          <div class="stat-box">
+            <span>أعلى وزن مسجل</span>
+            <strong id="statStrongest">0 كجم</strong>
+          </div>
+          <div class="stat-box">
+            <span>تذكيرات المكملات</span>
+            <strong id="statSupps">0</strong>
+          </div>
+          <div class="stat-box">
+            <span>الجلسات المسجلة</span>
+            <strong id="statSessions">0</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="overview-side">
+        <span class="panel-badge">تركيز اليوم</span>
+        <h3>إشارات سريعة تساعدك على اتخاذ قرارك اليومي</h3>
+
+        <div class="mini-list">
+          <div class="mini-card">
+            <strong>البروتين</strong>
+            <p id="summaryProtein">0 جم يوميًا.</p>
+          </div>
+          <div class="mini-card">
+            <strong>الكارب</strong>
+            <p id="summaryCarbs">0 جم للطاقة والأداء.</p>
+          </div>
+          <div class="mini-card">
+            <strong>الدهون</strong>
+            <p id="summaryFat">0 جم للتوازن والشبع.</p>
+          </div>
+          <div class="mini-card">
+            <strong>استراتيجية الهدف</strong>
+            <p id="summaryGoal">اختر هدفك الحالي لتظهر التوصية المناسبة.</p>
+          </div>
+          <div class="mini-card">
+            <strong>آخر أداء</strong>
+            <p id="summaryWorkout">أضف أول جلسة لتبدأ لوحة التقدم بالعمل.</p>
+          </div>
+          <div class="mini-card">
+            <strong>المكمل القادم</strong>
+            <p id="summarySuppTime">لا توجد مواعيد مكملات مسجلة حتى الآن.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="quick-strip">
+      <div class="quick-item">
+        <strong>1</strong>
+        <span>حدّث بياناتك ليتم ضبط السعرات والماكروز تلقائيًا.</span>
+      </div>
+      <div class="quick-item">
+        <strong>2</strong>
+        <span>نظّم المكملات والوجبات اليومية في واجهة واحدة.</span>
+      </div>
+      <div class="quick-item">
+        <strong>3</strong>
+        <span>سجّل الأداء وراجع الرسم البياني لتقييم التطور.</span>
+      </div>
+    </section>
+
+    <section class="status-strip" aria-label="حالة المنصة">
+      <div class="status-chip">
+        <span>حالة المنصة</span>
+        <strong>تشغيل مستقر</strong>
+      </div>
+      <div class="status-chip">
+        <span>التخزين</span>
+        <strong>محلي وآمن</strong>
+      </div>
+      <div class="status-chip">
+        <span>تحديث الواجهة</span>
+        <strong>Professional UI</strong>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div id="nutritionPanel" class="panel panel-wide">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">التغذية</span>
+            <h2>حاسبة السعرات والماكروز</h2>
+            <p>توصية يومية ديناميكية بناءً على العمر، الوزن، الطول، النشاط، والهدف الحالي.</p>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="age">العمر</label>
+            <input id="age" type="number" min="12">
+          </div>
+          <div class="field">
+            <label for="weight">الوزن (كجم)</label>
+            <input id="weight" type="number" min="30">
+          </div>
+          <div class="field">
+            <label for="height">الطول (سم)</label>
+            <input id="height" type="number" min="120">
+          </div>
+          <div class="field">
+            <label for="gender">النوع</label>
+            <select id="gender">
+              <option value="male">ذكر</option>
+              <option value="female">أنثى</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="activity">مستوى النشاط</label>
+            <select id="activity">
+              <option value="low">نشاط خفيف</option>
+              <option value="moderate">نشاط متوسط</option>
+              <option value="high">نشاط عالٍ</option>
+              <option value="athlete">رياضي مكثف</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="goal">الهدف</label>
+            <select id="goal">
+              <option value="cut">تنشيف</option>
+              <option value="maintain">ثبات</option>
+              <option value="bulk">زيادة عضلية</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="macro-cards">
+          <div class="macro-card macro-card-highlight">
+            <span>السعرات</span>
+            <strong id="caloriesValue">0</strong>
+            <small>سعرة يوميًا</small>
+          </div>
+          <div class="macro-card">
+            <span>البروتين</span>
+            <strong id="proteinValue">0</strong>
+            <small>جرام</small>
+          </div>
+          <div class="macro-card">
+            <span>الكارب</span>
+            <strong id="carbsValue">0</strong>
+            <small>جرام</small>
+          </div>
+          <div class="macro-card">
+            <span>الدهون</span>
+            <strong id="fatValue">0</strong>
+            <small>جرام</small>
+          </div>
+        </div>
+      </div>
+
+      <div id="supplementsPanel" class="panel panel-mid">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">المكملات</span>
+            <h2>منبّه المكملات</h2>
+            <p>جدول سريع للمكملات اليومية مع إبراز أقرب موعد قادم.</p>
+          </div>
+        </div>
+
+        <form id="supplementForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="suppName">اسم المكمل</label>
+              <input id="suppName" placeholder="Creatine">
+            </div>
+            <div class="field">
+              <label for="suppDose">الجرعة</label>
+              <input id="suppDose" placeholder="5g">
+            </div>
+            <div class="field-full">
+              <label for="suppTime">الوقت</label>
+              <input id="suppTime" type="time">
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="btn btn-primary" type="submit">إضافة تذكير</button>
+          </div>
+        </form>
+
+        <div id="supplementList" class="supp-list section-gap"></div>
+      </div>
+
+      <div id="workoutPanel" class="panel panel-mid">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">الأداء</span>
+            <h2>سجل الأوزان</h2>
+            <p>أدخل التمرين والوزن والعدات لتتبع التحسن الفعلي مع الوقت.</p>
+          </div>
+        </div>
+
+        <form id="workoutForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="workoutDate">التاريخ</label>
+              <input id="workoutDate" type="date">
+            </div>
+            <div class="field">
+              <label for="workoutExercise">التمرين</label>
+              <input id="workoutExercise" placeholder="Squat">
+            </div>
+            <div class="field">
+              <label for="workoutWeight">الوزن (كجم)</label>
+              <input id="workoutWeight" type="number">
+            </div>
+            <div class="field">
+              <label for="workoutReps">العدات</label>
+              <input id="workoutReps" type="number">
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="btn btn-primary" type="submit">تسجيل الأداء</button>
+            <button id="restoreDemo" class="btn btn-secondary" type="button">تحميل بيانات تجريبية</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel panel-full">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">التمارين</span>
+            <h2>مكتبة التمارين</h2>
+            <p>اختر العضلة أو النمط، ثم استخدم التمرين المقترح مباشرة داخل سجل الأداء.</p>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="exerciseCategory">العضلة أو النوع</label>
+            <select id="exerciseCategory"></select>
+          </div>
+          <div class="field">
+            <label for="exercisePreset">التمرين المقترح</label>
+            <select id="exercisePreset"></select>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="fillExercise" class="btn btn-secondary" type="button">استخدام التمرين في السجل</button>
+        </div>
+
+        <div id="exerciseLibrary" class="option-grid section-gap option-grid-3"></div>
+      </div>
+
+      <div id="progressPanel" class="panel panel-wide">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">البرنامج</span>
+            <h2>نظام التدريب الأسبوعي</h2>
+            <p>اختر تقسيمة مناسبة ثم عدّل عليها لاحقًا بحسب جدولك والتعافي المتاح لديك.</p>
+          </div>
+          <select id="programType" class="compact-select">
+            <option value="pushpulllegs">Push Pull Legs</option>
+            <option value="upperlower">Upper / Lower</option>
+            <option value="fatloss">Fat Loss + Cardio</option>
+          </select>
+        </div>
+
+        <div id="trainingPlan" class="option-grid"></div>
+      </div>
+
+      <div class="panel panel-mid">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">الوجبات</span>
+            <h2>نظام الأكل اليومي</h2>
+            <p>بدّل كل وجبة من اقتراحات جاهزة ثم ثبّت الاختيار المناسب لك.</p>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="mealSlot">الوجبة</label>
+            <select id="mealSlot"></select>
+          </div>
+          <div class="field">
+            <label for="mealChoice">اختيار الأكل</label>
+            <select id="mealChoice"></select>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="applyMealChoice" class="btn btn-secondary" type="button">اعتماد الوجبة</button>
+          <button id="resetMeals" class="btn btn-danger" type="button">استعادة الاقتراحات</button>
+        </div>
+
+        <div id="mealPlan" class="meal-plan section-gap"></div>
+      </div>
+
+      <div class="panel panel-wide">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">التطور</span>
+            <h2>الرسم البياني للأداء</h2>
+            <p>لقطة واضحة للتغير في الأوزان المسجلة عبر الوقت.</p>
+          </div>
+        </div>
+
+        <div class="chart-wrap">
+          <canvas id="progressChart" width="900" height="380"></canvas>
+        </div>
+      </div>
+
+      <div class="panel panel-mid">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">القياسات</span>
+            <h2>تتبع قياسات الجسم</h2>
+            <p>سجّل تطور وزنك ونسبة الدهون وقياسات الخصر بانتظام.</p>
+          </div>
+        </div>
+        <form id="metricsForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="metricWeight">الوزن الحالي (كجم)</label>
+              <input id="metricWeight" type="number" step="0.1" placeholder="75.5">
+            </div>
+            <div class="field">
+              <label for="metricBodyFat">نسبة الدهون (%)</label>
+              <input id="metricBodyFat" type="number" step="0.1" placeholder="15">
+            </div>
+            <div class="field">
+              <label for="metricWaist">قياس الخصر (سم)</label>
+              <input id="metricWaist" type="number" step="0.1" placeholder="85">
+            </div>
+            <div class="field">
+              <label for="metricDate">التاريخ</label>
+              <input id="metricDate" type="date">
+            </div>
+          </div>
+          <div class="button-row">
+            <button class="btn btn-primary" type="submit">حفظ القياسات</button>
+          </div>
+        </form>
+        <div id="metricsList" class="history-list section-gap"></div>
+      </div>
+
+      <div class="panel panel-mid">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">الهيدرات</span>
+            <h2>متابعة شرب الماء</h2>
+            <p>حافظ على ترطيب جسمك بتسجيل كمية الماء المستهلكة يومياً.</p>
+          </div>
+        </div>
+        <div class="water-tracker-box">
+          <div class="water-stat">
+            <strong id="waterTotal">0</strong>
+            <span>لتر اليوم</span>
+          </div>
+          <div class="water-actions">
+            <button id="addWaterSmall" class="btn btn-secondary">+ 250ml</button>
+            <button id="addWaterLarge" class="btn btn-secondary">+ 500ml</button>
+            <button id="resetWater" class="btn btn-danger">تصفير</button>
+          </div>
+          <div class="water-progress-bar">
+            <div id="waterProgress" class="water-fill" style="width: 0%"></div>
+          </div>
+          <small>الهدف اليومي: 3 لتر</small>
+        </div>
+      </div>
+
+      <div id="historyPanel" class="panel panel-full">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">السجل</span>
+            <h2>آخر السجلات</h2>
+            <p>قائمة مرتبة من الأحدث إلى الأقدم مع إمكانية حذف أي جلسة لم تعد تريد الاحتفاظ بها.</p>
+          </div>
+          <button id="clearHistory" class="btn btn-danger" type="button">مسح السجل</button>
+        </div>
+
+        <div id="historyList" class="history-list history-table"></div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      PulseFuel Pro &copy; 2026 | منصة احترافية لإدارة الأداء الرياضي والتغذية. جميع الحقوق محفوظة.
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
