@@ -78,12 +78,12 @@ const defaultProfile = {
   goal: "maintain",
 };
 
-const demoSupplements = [
+const starterSupplements = [
   { id: 1, name: "Creatine", dose: "5g", time: "08:00" },
   { id: 2, name: "Whey Protein", dose: "1 scoop", time: "17:30" },
 ];
 
-const demoHistory = [
+const starterHistory = [
   { id: 1, date: "2026-04-05", exercise: "Bench Press", weight: 70, reps: 8 },
   { id: 2, date: "2026-04-10", exercise: "Bench Press", weight: 72.5, reps: 8 },
   { id: 3, date: "2026-04-16", exercise: "Bench Press", weight: 75, reps: 6 },
@@ -701,10 +701,10 @@ function bindForms() {
     $("workoutDate").value = todayDateValue();
   });
 
-  $("restoreDemo").addEventListener("click", () => {
-    state.history = clone(demoHistory);
+  $("restoreRecords").addEventListener("click", () => {
+    state.history = clone(starterHistory);
     if (!state.supplements.length) {
-      state.supplements = clone(demoSupplements);
+      state.supplements = clone(starterSupplements);
     }
     saveToStorage();
     renderSupplements();
