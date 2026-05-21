@@ -44,13 +44,14 @@ function redirectToDashboard() {
   location.replace(getNextUrl());
 }
 
-function handleLogin(event) {
+async function handleLogin(event) {
   event.preventDefault();
   const email = $("loginEmail").value.trim().toLowerCase();
   const password = $("loginPassword").value;
-  const user = state.users.find((item) => item.email === email && item.password === password);
+  const user = state.users.find((item) => item.email === email);
+  const passwordMatches = user ? await verifyPassword(user, password) : false;
 
-  if (!user) {
+  if (!passwordMatches) {
     setAuthMessage("البريد أو كلمة المرور غير صحيحين.", "error");
     return;
   }
@@ -60,6 +61,33 @@ function handleLogin(event) {
   $("loginForm").reset();
   setAuthMessage("تم تسجيل الدخول بنجاح.", "success");
   setTimeout(redirectToDashboard, 250);
+}
+
+async function verifyPassword(user, password) {
+  if (user.passwordHash) {
+    return user.passwordHash === await hashPassword(password);
+  }
+
+  if (user.password === password) {
+    user.passwordHash = await hashPassword(password);
+    delete user.password;
+    saveAuthState();
+    return true;
+  }
+
+  return false;
+}
+
+async function hashPassword(value) {
+  if (window.crypto?.subtle) {
+    const encoder = new TextEncoder();
+    const digest = await window.crypto.subtle.digest("SHA-256", encoder.encode(value));
+    return Array.from(new Uint8Array(digest))
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  return `plain:${value}`;
 }
 
 function bindAuth() {

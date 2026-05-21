@@ -36,7 +36,7 @@ function redirectToDashboard() {
   location.replace("./index.html");
 }
 
-function handleSignup(event) {
+async function handleSignup(event) {
   event.preventDefault();
   const name = $("signupName").value.trim();
   const email = $("signupEmail").value.trim().toLowerCase();
@@ -53,13 +53,26 @@ function handleSignup(event) {
     return;
   }
 
-  const user = { id: Date.now(), name, email, password };
+  const passwordHash = await hashPassword(password);
+  const user = { id: Date.now(), name, email, passwordHash };
   state.users.push(user);
   state.currentUser = { id: user.id, name: user.name, email: user.email };
   saveAuthState();
   $("signupForm").reset();
   setAuthMessage("تم إنشاء الحساب بنجاح. يتم تحويلك الآن إلى اللوحة.", "success");
   setTimeout(redirectToDashboard, 500);
+}
+
+async function hashPassword(value) {
+  if (window.crypto?.subtle) {
+    const encoder = new TextEncoder();
+    const digest = await window.crypto.subtle.digest("SHA-256", encoder.encode(value));
+    return Array.from(new Uint8Array(digest))
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  return `plain:${value}`;
 }
 
 function init() {
