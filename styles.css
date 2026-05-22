@@ -1231,3 +1231,29 @@ select:focus-visible {
     max-width: 100%;
   }
 }
+
+@media (min-width: 1440px) {
+  .app-shell,
+  .auth-shell {
+    max-width: 1720px;
+    margin-inline: auto;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar,
+  .panel-head,
+  .overview-actions {
+    align-items: stretch;
+  }
+
+  .compact-select,
+  .field input,
+  .field select {
+    width: 100%;
+  }
+}
