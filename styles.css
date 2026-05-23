@@ -1257,3 +1257,52 @@ select:focus-visible {
     width: 100%;
   }
 }
+
+/* Compact sticky topbar across small, large, and XL screens */
+@media (max-width: 640px) {
+  .topbar {
+    top: 6px;
+    padding: 9px 12px;
+    border-radius: 18px;
+    gap: 10px;
+  }
+
+  .topbar-title {
+    font-size: 1rem;
+    margin-top: 2px;
+  }
+
+  .topbar-text,
+  .topbar-meta {
+    font-size: 12px;
+  }
+
+  .topbar-nav a,
+  .topbar-actions .btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .topbar {
+    top: 8px;
+    padding: 10px 18px;
+    gap: 18px;
+  }
+
+  .topbar-title {
+    font-size: 1.18rem;
+  }
+
+  .topbar-nav {
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .topbar {
+    top: 8px;
+    padding: 10px 20px;
+  }
+}
